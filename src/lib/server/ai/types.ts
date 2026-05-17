@@ -1,6 +1,6 @@
 export const AGENT_NAMES = [
+  'doru',
   'nebojsa',
-  'nikola',
   'rajko',
   'stjepan',
   'alexandra',
