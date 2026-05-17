@@ -20,8 +20,8 @@
 
   let messages: Message[] = [
     { id: newId(), ts: '[18:32]', nkClass: 's', nk: '*', txClass: 's', tx: 'Now talking in #about-raul' },
-    { id: newId(), ts: '[18:32]', nkClass: 's', nk: '*', txClass: 's', tx: 'Raul_AI has joined #about-raul' },
-    { id: newId(), ts: '[18:32]', nkClass: 'b', nk: '<Raul_AI>', txClass: 'b', tx: "Hey! I'm Raul's AI assistant. Ask me anything about him — his background, work, the garden, Emma... I'll do my best." },
+    { id: newId(), ts: '[18:32]', nkClass: 's', nk: '*', txClass: 's', tx: 'Astra has joined #about-raul' },
+    { id: newId(), ts: '[18:32]', nkClass: 'b', nk: '<Astra>', txClass: 'b', tx: "Hey! I'm Astra, Raul's AI assistant. Ask me anything about him — his background, work, the garden, Emma... I'll pull in the right specialists from the channel as we go." },
   ];
 
   const history: Array<{ role: string; content: string }> = [];
@@ -29,6 +29,8 @@
   let disabled = false;
   let status = 'Connected to raulbuibas.dev · #about-raul';
   let logEl: HTMLDivElement;
+  let onlineAgents: string[] = [];
+  const joinedAgents = new Set<string>();
 
   async function scrollLog() {
     await tick();
@@ -46,8 +48,8 @@
     await scrollLog();
 
     const thinkingId = newId();
-    messages = [...messages, { id: thinkingId, ts: now(), nkClass: 'b', nk: '<Raul_AI>', txClass: 'b', tx: '', thinking: true }];
-    status = 'Raul_AI is typing...';
+    messages = [...messages, { id: thinkingId, ts: now(), nkClass: 'b', nk: '<Astra>', txClass: 'b', tx: '', thinking: true }];
+    status = 'Astra is typing...';
     await scrollLog();
 
     try {
@@ -58,11 +60,29 @@
       });
 
       if (!res.ok) throw new Error('API error');
-      const { reply } = await res.json();
+      const { reply, agents = [] } = await res.json();
 
-      messages = messages.map(m =>
-        m.id === thinkingId ? { ...m, tx: reply, thinking: false } : m
-      );
+      const newJoins: Message[] = [];
+      for (const agent of agents as string[]) {
+        if (!joinedAgents.has(agent)) {
+          joinedAgents.add(agent);
+          onlineAgents = [...onlineAgents, agent];
+          newJoins.push({
+            id: newId(),
+            ts: now(),
+            nkClass: 's',
+            nk: '*',
+            txClass: 's',
+            tx: `${agent} has joined #about-raul`,
+          });
+        }
+      }
+
+      messages = [
+        ...messages.slice(0, -1),
+        ...newJoins,
+        { ...messages[messages.length - 1], tx: reply, thinking: false },
+      ];
       history.push({ role: 'assistant', content: reply });
       status = 'Connected to raulbuibas.dev · #about-raul';
     } catch {
@@ -114,7 +134,10 @@
           <div class="irc-ch">garden</div>
           <div class="irc-divider"></div>
           <div class="irc-sb-label">Online</div>
-          <div class="irc-user"><div class="dot"></div><span>Raul_AI</span></div>
+          <div class="irc-user"><div class="dot"></div><span>Astra</span></div>
+          {#each onlineAgents as agent (agent)}
+            <div class="irc-user"><div class="dot"></div><span>{agent}</span></div>
+          {/each}
           <div class="irc-user"><div class="dot away"></div><span>raul</span></div>
         </div>
 
