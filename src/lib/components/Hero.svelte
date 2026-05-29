@@ -1,17 +1,17 @@
 <section class="hero">
   <div class="hero-bg-letter" aria-hidden="true">E</div>
-  <div class="hero-eyebrow">Engineer · Explorer · AI Enthusiast</div>
+  <div class="hero-eyebrow">Engineer · Explorer · Enthusiast</div>
   <h1>Building things.<br><em>Thinking a lot.</em><br>Rebuilding things.</h1>
   <p class="hero-bio">
     Engineer by calling. Architect in my head. I explore systems, ideas, and — recently —
-    the complete mystery of a six-week-old human named Emma.
+    the sheer awe of a new consciousness emerging before my eyes.
   </p>
   <div class="hero-tags">
-    <span class="tag">Romania × Serbia</span>
-    <span class="tag">Côte d'Azur, since 2018</span>
-    <span class="tag">Building since 2008</span>
-    <span class="tag">Amateur Gardener</span>
-    <span class="tag">AI Enthusiast</span>
+    <span class="tag">Travelling</span>
+    <span class="tag">Gardening</span>
+    <span class="tag">Wondering</span>
+    <span class="tag">Building</span>
+    <span class="tag">Writing</span>
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>

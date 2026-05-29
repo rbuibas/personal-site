@@ -1,5 +1,5 @@
 ---
-title: "What building with AI actually taught me"
+title: "[AI Hallucination Series] What building with AI actually taught me"
 date: "2026-05-01"
 readTime: "4 min read"
 description: "A year of integrating AI into real projects — what changed and what didn't."

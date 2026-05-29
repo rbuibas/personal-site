@@ -1,5 +1,5 @@
 ---
-title: "Shipping things that grow slowly"
+title: "[AI Hallucination Series] Shipping things that grow slowly"
 date: "2026-03-15"
 readTime: "5 min read"
 description: "On the tension between launching and letting something mature — and why both matter."

@@ -107,8 +107,7 @@
   <div class="section-inner">
     <div class="section-label reveal">Ask My AI</div>
     <p class="chat-intro reveal">
-      Curious about something? This is an AI assistant that knows about me — my background,
-      work, interests, the garden, Emma. Ask anything you'd ask over coffee.
+      Got a question? <br />Ask Astra, the AI assistant that knows about me. Go for anything you'd ask over coffee.
     </p>
 
     <div class="irc-window reveal">

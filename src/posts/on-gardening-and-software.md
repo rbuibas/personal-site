@@ -1,5 +1,5 @@
 ---
-title: "On gardening and software"
+title: "[AI Hallucination Series] On gardening and software"
 date: "2026-04-08"
 readTime: "3 min read"
 description: "There's more overlap between tending a garden and building systems than I expected."

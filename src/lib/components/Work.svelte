@@ -8,8 +8,8 @@
           <span class="project-thumb-label">Project 01</span>
         </div>
         <div class="project-body">
-          <h3>[Project Name]</h3>
-          <p>A short description of what this does, why it matters, and what you found interesting about building it.</p>
+          <h3>Keeping Emma safe.</h3>
+          <p>Learning on the job.</p>
           <span class="project-link">View project →</span>
         </div>
       </div>
@@ -19,15 +19,15 @@
           <span class="project-thumb-label">Project 02</span>
         </div>
         <div class="project-body">
-          <h3>[Project Name]</h3>
-          <p>A short description of what this does, why it matters, and what you found interesting about building it.</p>
+          <h3>Keeping tomatoes alive.</h3>
+          <p>I wish permaculture was easier.</p>
           <span class="project-link">View project →</span>
         </div>
       </div>
 
       <div class="project-card wip reveal">
         <div style="font-size: 28px">🚧</div>
-        <p>Next project in progress — check back soon</p>
+        <p>Building a BeReal clone scoped to a <s>specific</s> secret use case.</p>
       </div>
 
     </div>

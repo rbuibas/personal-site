@@ -7,50 +7,27 @@
         <div class="about-photo">
           <div class="about-photo-corner tl"></div>
           <div class="about-photo-corner br"></div>
-          <span class="about-photo-label">your photo</span>
+          <span class="about-photo-label">
+            <!-- using local photo from static diretory -->
+            <img src="/baby-portrait.jpg" alt="Photo of me" style="width: 100%; height: auto; border-radius: 2px;">
+          </span>
         </div>
-        <div class="about-origin">Romania × Serbia</div>
       </div>
 
       <div class="about-text reveal">
-        <p>I've been building software since 2008, across industries that have nothing obvious
-        in common — <strong>printing, microcontrollers, automotive, travel</strong>. The thread
-        is curiosity. I get drawn into problems, pull them apart, and reassemble them differently.</p>
-
-        <p>I grew up between Romania and Serbia, shaped by both and fully claimed by neither.
-        That in-between feeling never really left. I think it's why I'm more comfortable with
-        <em>"it depends"</em> than most engineers.</p>
-
-        <p>In 2018 I landed on the Côte d'Azur and haven't left. I've since become an amateur
-        gardener — it balances the day job in ways I didn't expect. Turns out tending to things
-        that grow slowly is good for an engineer's soul.</p>
-
-        <p>I like to spin plans and designs in my head — sometimes it's enough to keep me
-        entertained for hours. Beats doom scrolling. Which I do. Once every three months.
-        For about 90 minutes.</p>
-
-        <div class="currently-box">
-          <div class="cl">Currently</div>
-          <p>🍼 Emma, born 29.03.2026. I am still baffled how a 3kg person has managed to
-          rewire every part of how I think and feel.</p>
-        </div>
+        <p>
+          Tearing myself apart between writing this the old fashined way or having the the artificial intelligence help me out. I think I'll need to write this on paper since AI is trying to autocomplete everything I type. It's almost awkward.
+          What is the old fashioned way? Staring at a blank page or piece of paper and pretending to have a writer's blockage. I think I'll go for that.
+        </p>
 
         <div class="timeline">
           <div class="tl-item">
-            <span class="tl-year">2008—</span>
-            <span class="tl-text"><strong>Printing industry</strong> — first steps in software</span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-year">—</span>
-            <span class="tl-text"><strong>Microcontrollers &amp; embedded systems</strong></span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-year">—</span>
-            <span class="tl-text"><strong>Automotive</strong> — scale and complexity</span>
+            <span class="tl-year">1986</span>
+            <span class="tl-text"><strong>Yanked into existence</strong> — left to struggle with consciousness for quite a while.</span>
           </div>
           <div class="tl-item">
             <span class="tl-year">Now</span>
-            <span class="tl-text"><strong>Travel tech</strong> — where I currently build</span>
+            <span class="tl-text"><strong>Pondering the audacity of creating a life</strong> — and how for granted we take it.</span>
           </div>
         </div>
       </div>

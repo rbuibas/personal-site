@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-  <title>Raul Buibas — Engineer, Explorer, AI Enthusiast</title>
+  <title>Raul Buibas — Engineer, Explorer, Enthusiast</title>
   <meta name="description" content="Engineer by calling. Architect in my head. Building things, thinking a lot, rebuilding things." />
 </svelte:head>
 
@@ -24,7 +24,7 @@
     <div class="footer-heading">Say hello.</div>
     <a href="mailto:hello@raulbuibas.dev" class="footer-email">hello@raulbuibas.dev</a>
     <div class="footer-socials">
-      <a href="https://github.com/raulbuibas" class="social-pill" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/rbuibas" class="social-pill" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://linkedin.com/in/raulbuibas" class="social-pill" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </div>
