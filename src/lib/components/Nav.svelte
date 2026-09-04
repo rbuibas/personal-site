@@ -9,7 +9,6 @@
     links: [
       { href: '/professional#education', label: 'Education' },
       { href: '/professional#career', label: 'Career' },
-      { href: '/professional#writing', label: 'Writing' },
       { href: '/professional#chat', label: 'Chat' },
       { href: '/professional#contact', label: 'Contact' },
     ],
@@ -104,14 +103,15 @@
 
   /*
     The professional labels ("Education", "Career") are longer than the
-    personal ones, so five of them plus the logo no longer fit on a phone.
-    Drop the crossover link, tighten the type, and let the row scroll as a
-    safety valve so no label is ever clipped by the viewport edge.
+    personal ones, and the personal side still has five tabs, so a full row
+    plus the logo does not fit on a phone. Drop the crossover link, tighten
+    the type, and let the row scroll as a safety valve so no label is ever
+    clipped by the viewport edge.
   */
   @media (max-width: 600px) {
     .nav-crossover { display: none; }
     .nav-logo { flex-shrink: 0; }
-    /* The short form buys back the ~60px the five tabs need. */
+    /* The short form buys back the ~60px the tab row needs. */
     .nav-logo-full { display: none; }
     .nav-logo-short { display: inline; }
     .nav-links {

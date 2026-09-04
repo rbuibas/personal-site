@@ -1,8 +1,16 @@
 <script lang="ts">
   import Hero from '$lib/components/Hero.svelte';
   import TimelineSection from '$lib/components/professional/TimelineSection.svelte';
-  import UnderConstruction from '$lib/components/professional/UnderConstruction.svelte';
-  import { professionalHero, careerIntro, education, career } from '$lib/data/professional';
+  import ChatComingSoon from '$lib/components/professional/ChatComingSoon.svelte';
+  import Contact from '$lib/components/professional/Contact.svelte';
+  import {
+    professionalHero,
+    careerIntro,
+    education,
+    career,
+    chatComingSoon,
+    contact,
+  } from '$lib/data/professional';
 </script>
 
 <svelte:head>
@@ -18,9 +26,8 @@
 <TimelineSection id="education" label="Education" eras={education} showEras={false} />
 <TimelineSection id="career" label="Career" eras={career} intro={careerIntro} />
 
-<UnderConstruction id="writing" label="Writing" variant="writing" />
-<UnderConstruction id="chat" label="Chat" variant="chat" />
-<UnderConstruction id="contact" label="Contact" variant="contact" />
+<ChatComingSoon id="chat" label="Chat" {...chatComingSoon} />
+<Contact id="contact" label="Contact" {...contact} />
 
 <footer class="footer">
   <div class="footer-made">© 2026 · Raul Buibas</div>

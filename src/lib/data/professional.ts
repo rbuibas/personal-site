@@ -593,3 +593,22 @@ export const career: TimelineEra[] = [
     ],
   },
 ];
+
+/**
+ * The Chat section is not built yet. Its placeholder says what is coming
+ * rather than standing in with filler.
+ */
+export const chatComingSoon = {
+  caption: 'coming soon',
+  blurb:
+    'A personal AI assistant that knows my work and background — ask it about my ' +
+    'experience, or leave a message and it will pass it along.',
+};
+
+export const contact = {
+  email: 'raulbuibas@proton.me',
+  profiles: [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raulbuibas/' },
+    { label: 'GitHub', href: 'https://github.com/rbuibas' },
+  ],
+};
