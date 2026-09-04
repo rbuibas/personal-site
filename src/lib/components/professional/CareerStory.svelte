@@ -1,10 +1,18 @@
 <script lang="ts">
-  import { careerStory, storyIntro } from '$lib/data/professional';
+  import { careerStory, storyIntro, careerStoryHeading } from '$lib/data/professional';
+  import AbstractionLadder from './AbstractionLadder.svelte';
 </script>
 
 <section class="section section--surface" id="career-story">
   <div class="cs-inner">
-    <p class="cs-intro reveal">{storyIntro}</p>
+    <div class="cs-lede reveal">
+      <h2 class="cs-heading">{careerStoryHeading}</h2>
+      <p class="cs-intro">{storyIntro}</p>
+    </div>
+
+    <div class="reveal">
+      <AbstractionLadder />
+    </div>
 
     <div class="cs-chapters">
       {#each careerStory as chapter (chapter.id)}
@@ -41,12 +49,27 @@
     max-width: 1080px;
     margin: 0 auto;
   }
+  .cs-lede {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+  .cs-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.4vw, 46px);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -.02em;
+    color: var(--fg);
+    max-width: 22ch;
+    text-wrap: pretty;
+  }
   .cs-intro {
     font-size: 16px;
     color: var(--fg-muted);
     line-height: 1.9;
     max-width: 58ch;
-    margin-bottom: 64px;
   }
 
   .cs-chapters { display: flex; flex-direction: column; }

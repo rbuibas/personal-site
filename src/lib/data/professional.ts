@@ -632,6 +632,8 @@ export type StoryView = {
   /** The one-line descriptor under the name in the switcher. */
   blurb: string;
   href: string;
+  /** Marks a telling that is still placeholder text, not Raul's own words. */
+  wip?: boolean;
 };
 
 /**
@@ -640,22 +642,23 @@ export type StoryView = {
  */
 export const storyViews: StoryView[] = [
   {
-    id: 'story',
-    name: 'The Career Story',
-    blurb: 'in order, over coffee',
-    href: '/professional',
-  },
-  {
-    id: 'turning-points',
-    name: 'Turning Points',
-    blurb: 'six decisions that changed it',
-    href: '/professional?view=turning-points',
-  },
-  {
     id: 'chronology',
     name: 'Classic Chronology',
     blurb: 'the CV shape, if you must',
     href: '/professional?view=chronology',
+  },
+  {
+    id: 'turning-points',
+    name: 'Turning Points',
+    blurb: 'six decisions · unfinished draft',
+    href: '/professional?view=turning-points',
+    wip: true,
+  },
+  {
+    id: 'story',
+    name: 'The Career Story',
+    blurb: 'in order, over coffee',
+    href: '/professional',
   },
 ];
 
@@ -674,42 +677,126 @@ export type StoryChapter = {
 };
 
 export const storyIntro =
-  'Nineteen years of engineering, told the way I would tell it to you over a coffee. ' +
-  'The dates and the employers are in the margin, where they belong.';
+  'This is my journey through IT, the way I would tell it over a coffee.';
+
+/**
+ * The climb, as a sequence rather than a timeline: the gaps between these
+ * moments are wildly uneven in years, so they are spaced evenly and the year
+ * is carried as a label. `level` is a rung on the ladder, 1 being closest to
+ * the metal — it is a judgement, not a measurement.
+ */
+export type LadderStep = {
+  year: string;
+  label: string;
+  level: number;
+};
+
+/** The highest rung used, so the diagram can scale itself. */
+export const ladderRungs = 7;
+
+export const abstractionLadder: LadderStep[] = [
+  { year: '2001', label: 'Logic gates', level: 1 },
+  { year: '2005', label: 'Boards, by hand', level: 2 },
+  { year: '2006', label: 'C, and algorithms', level: 4 },
+  { year: '2016', label: 'Compiler, assembler', level: 3 },
+  { year: '2017', label: 'Java, Eclipse tooling', level: 5 },
+  { year: '2018', label: 'Angular, the browser', level: 6 },
+  { year: '2019', label: 'JVM internals', level: 3 },
+  { year: '2023', label: 'Cloud, APIs, AI', level: 7 },
+];
+
+export const careerStoryHeading =
+  'Looking back, it is almost a clean climb up the abstraction ladder.';
 
 export const careerStory: StoryChapter[] = [
   {
-    id: 'story-board',
-    period: '2001 — 2005',
-    meta: ['Sremska Mitrovica', 'school of automation'],
-    title: 'The board I etched myself',
+    id: 'story-taking-apart',
+    period: 'the 1990s',
+    meta: ['Sremska Mitrovica', 'before any of it'],
+    title: 'Taking things apart',
     paragraphs: [
-      'I picked the automation school over the general one, which in a small Serbian town in ' +
-        '2001 was a slightly odd thing to do. Four years later I handed in a diploma project ' +
-        'that started as bare copper: I drew the circuit by hand, etched the board in acid ' +
-        'rather than ordering one, burned a controller chip and a flash ROM, and wrote the ' +
-        'control software in Pascal.',
-      'Nobody sat me down and explained that the hardware and the software were one project. ' +
-        'The board simply refused to work until I understood both, and I have been suspicious ' +
-        'of that line ever since.',
+      'As a kid I liked to take things apart and try to rebuild them. I had a passion for ' +
+        'electronic devices. I would get old calculators, remotes, anything I could find, and ' +
+        'break them open. I still remember the first one I managed to fix: a shop calculator ' +
+        'that printed receipts on a roll of paper. I could not find the proper paper to test ' +
+        'it, so I cut strips out of an A4 sheet and fed them in, just to see it work.',
+      'Owning a computer was not an option, though I dreamt about it. I did get my hands on a ' +
+        'games console with a built-in QWERTY keyboard. There was no operating system and no ' +
+        'way to program anything, but some of the games were very good for practising typing. ' +
+        'So I did. I could type fast long before high school.',
+      'In the seventh grade I finally had access to a computer at school, a Commodore if I ' +
+        'remember correctly. I wrote my first lines in QBasic. I knew that was what I wanted ' +
+        'to do. There was no doubt.',
     ],
   },
   {
-    id: 'story-university',
-    period: '2005 — 2010',
-    meta: ['Timișoara', 'BSc, then MSc'],
+    id: 'story-highschool',
+    period: '2001 — 2005',
+    meta: ['Sremska Mitrovica', 'electrotechnical high school', 'automated systems'],
+    title: 'Electronics, but not by choice',
+    paragraphs: [
+      'There was no option in my region to go to a high school focused on informatics or ' +
+        'programming. An electrotechnical high school, in the section for automated systems, ' +
+        'was the closest I could get.',
+      'By accident it was a great choice. It laid a very good foundation for understanding ' +
+        'electronics and how devices work, long before learning to program them. The inside of ' +
+        'a computer, of a printer. Digital Electronics, after which I could draw a rudimentary ' +
+        'calculator out of nothing but logic gates — AND, OR, XOR, NOR. Before I wrote my ' +
+        'first real lines of code, I understood how a CPU works.',
+      'It ended with a diploma project that started as bare copper. I drew the circuit by ' +
+        'hand, made the board myself with acid rather than ordering one, burned a controller ' +
+        'chip and a flash ROM, and wrote the control software in Pascal.',
+      'Software and hardware cannot go one without the other. I would learn later that ' +
+        'software is often thought of completely independently of the hardware, especially at ' +
+        'the higher levels of abstraction.',
+    ],
+  },
+  {
+    id: 'story-bsc',
+    period: '2005 — 2008',
+    meta: [
+      'Timișoara',
+      'West University of Timișoara',
+      'BSc Informatics · 180 ECTS',
+    ],
+    title: 'University, in a language I barely spoke',
+    paragraphs: [
+      'I had left Romania at the age of five and only came back a few times since. At eighteen ' +
+        'I moved back for good and enrolled at the West University of Timișoara. When I ' +
+        'started my studies, the level at which I spoke Romanian was not better than that of a ' +
+        'five year old. It was definitely not good enough for university. It was an ' +
+        'interesting challenge, and quite a struggle in the first months.',
+      'The studies themselves were a dream for me. We started with algorithms, databases and ' +
+        'the C programming language. Later came more complex things, including image ' +
+        'processing and my first AI algorithms. I enjoyed every course.',
+      'My thesis was an image processing application written in C# — inversion, greyscale, ' +
+        'blur, histogram equalisation, and the statistics to inspect what it had done. It was ' +
+        'a working application rather than a paper, which was the point.',
+      'The degree lasted three years. I started an internship after the second one, was hired ' +
+        'by the company not long after, and finished my studies part time while working.',
+    ],
+  },
+  {
+    id: 'story-msc',
+    period: '2008 — 2010',
+    meta: [
+      'Timișoara',
+      'West University of Timișoara',
+      'MSc Informatics · Software Engineering',
+    ],
     title: 'Four hundred to one',
     paragraphs: [
-      'I crossed the border for university and stayed. The bachelor’s thesis was an ' +
-        'image-processing application rather than a paper — inversion, greyscale, blur, ' +
-        'histogram equalisation, all of it something you could click on. The master’s went ' +
-        'further out. I threw the pixels away entirely and stored images as polygon vertices ' +
-        'and colour, letting an evolutionary search hunt for an arrangement that scored close ' +
-        'enough to the original. It compressed at roughly four hundred to one, and it was well ' +
-        'off the mainstream track.',
-      'The whole of that degree overlapped with a full-time job. I do not entirely recommend ' +
-        'it, but it is where I learned that the interesting question is usually not how to ' +
-        'store the thing — it is what the thing actually is.',
+      'The master\u2019s was higher up: software lifecycle, graphics, and hints of product ' +
+        'management. I kept working the whole way through it, on reduced hours.',
+      'I also kept going with the C# image processing application and added a compression ' +
+        'algorithm to it. The pixels went away entirely. Images were stored as polygon ' +
+        'vertices and colour, with an evolutionary search looking for an arrangement that ' +
+        'scored close enough to the original against a configurable quality threshold. It ' +
+        'reached roughly four hundred to one.',
+      'When I did the research I did not find a practical implementation of the evolutionary ' +
+        'algorithm done the way I had done it. The notion existed. What I did not find ' +
+        'anywhere was the willingness to accept that much compromise for the sake of a 400:1 ' +
+        'ratio, and the proposal to use it for thumbnails.',
     ],
   },
   {

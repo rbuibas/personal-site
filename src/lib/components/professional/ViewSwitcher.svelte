@@ -23,7 +23,10 @@
           data-sveltekit-noscroll
           aria-current={view.id === active ? 'page' : undefined}
         >
-          <span class="vs-name">{view.name}</span>
+          <span class="vs-name">
+            {view.name}
+            {#if view.wip}<span class="vs-wip">draft</span>{/if}
+          </span>
           <span class="vs-blurb">{view.blurb}</span>
         </a>
       {/each}
@@ -79,6 +82,19 @@
     color: var(--fg-muted);
     line-height: 1.2;
     transition: color .2s ease;
+  }
+  .vs-wip {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #14202b;
+    background: #e8b64c;
+    padding: 3px 7px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 8px;
   }
   .vs-blurb {
     font-family: 'DM Mono', monospace;
