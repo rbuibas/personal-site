@@ -69,16 +69,17 @@ export function startYear(start?: string) {
 export const professionalHero = {
   eyebrow: 'Principal Engineer · Architecture · Generative AI',
   lines: [
-    { text: 'Nineteen years.' },
-    { text: 'Two halves.', em: true },
-    { text: 'One thread.' },
+    { text: 'Two decades.' },
+    { text: 'Adding abstraction layers.', em: true },
+    { text: 'Always driven by curiosity for challenges.' },
   ],
   bio:
     'Nineteen years in two halves that rarely meet in one person. The thread is the ' +
     'same throughout: build the thing underneath, and understand the constraints below that.',
   tags: ['Embedded', 'Compilers', 'JVM', 'Microservices', 'GenAI', 'Architecture'],
   bgLetter: 'R',
-  scrollLabel: 'Scroll through nineteen years',
+  // Empty on purpose: this page shows no scroll cue.
+  scrollLabel: '',
 };
 
 /**
@@ -702,18 +703,18 @@ export const abstractionLadder: LadderStep[] = [
   { year: '2016', label: 'Compiler, assembler', level: 3 },
   { year: '2017', label: 'Java, Eclipse tooling', level: 5 },
   { year: '2018', label: 'Angular, the browser', level: 6 },
-  { year: '2019', label: 'JVM internals', level: 3 },
+  { year: '2019', label: 'JVM internals', level: 4 },
   { year: '2023', label: 'Cloud, APIs, AI', level: 7 },
 ];
 
 export const careerStoryHeading =
-  'Looking back, it is almost a clean climb up the abstraction ladder.';
+  'Looking back, it is a curious climb up the abstraction ladder.';
 
 export const careerStory: StoryChapter[] = [
   {
     id: 'story-taking-apart',
     period: 'the 1990s',
-    meta: ['Sremska Mitrovica', 'before any of it'],
+    meta: ['Adaševci', 'before any of it'],
     title: 'Taking things apart',
     paragraphs: [
       'As a kid I liked to take things apart and try to rebuild them. I had a passion for ' +
