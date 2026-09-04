@@ -70,12 +70,13 @@ export const professionalHero = {
   eyebrow: 'Principal Engineer · Architecture · Generative AI',
   lines: [
     { text: 'Two decades.' },
-    { text: 'Adding abstraction layers.', em: true },
-    { text: 'Always driven by curiosity for challenges.' },
+    { text: 'Up the abstraction.', em: true },
+    { text: 'With curiosity for challenges.' },
   ],
   bio:
-    'Nineteen years in two halves that rarely meet in one person. The thread is the ' +
-    'same throughout: build the thing underneath, and understand the constraints below that.',
+    'Nineteen years, from assembler and bare-metal C to generative AI. Every few years ' +
+    'the stack changed underneath me. What did not change: I learned the layer below the ' +
+    'new thing until I could build on it with confidence.',
   tags: ['Embedded', 'Compilers', 'JVM', 'Microservices', 'GenAI', 'Architecture'],
   bgLetter: 'R',
   // Empty on purpose: this page shows no scroll cue.
