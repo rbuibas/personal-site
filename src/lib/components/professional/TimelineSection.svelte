@@ -81,6 +81,26 @@
     };
   });
 
+  /**
+   * Rail years are jump links. `activeIndex` is deliberately not set here —
+   * scroll position stays the single source of truth, so the rail tracks the
+   * scroll animation and settles on the target rather than fighting it.
+   */
+  function goToEntry(i: number) {
+    const node = nodes[i];
+    if (!node) return;
+    // 'instant', not 'auto': 'auto' defers to the CSS scroll-behavior, which
+    // app.css sets to smooth, so it would still animate.
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    node.scrollIntoView({ block: 'center', behavior: reduce ? 'instant' : 'smooth' });
+  }
+
+  /** Duplicate years exist (two 2007s, two 2019s), so name each jump target. */
+  function railLabel(node: TimelineNode) {
+    const period = formatPeriod(node.start, node.end);
+    return `${period}, ${node.title ?? node.organisation}`;
+  }
+
   $: progress = flat.length ? ((activeIndex + 1) / flat.length) * 100 : 0;
   $: activeEra = flat[activeIndex]?.era;
 </script>
@@ -93,23 +113,32 @@
     {/if}
 
     <div class="tl" class:is-live={mounted}>
-      <div class="tl-rail" aria-hidden="true">
+      <nav class="tl-rail" aria-label="{label} timeline">
         {#if showEras && activeEra}
           <div class="tl-rail-era">{activeEra.name}</div>
         {/if}
         <div class="tl-rail-axis">
-          <div class="tl-track">
+          <div class="tl-track" aria-hidden="true">
             <div class="tl-progress" style="height: {progress}%"></div>
           </div>
           <ol class="tl-years">
             {#each flat as entry, i (entry.node.id)}
-              <li class="tl-year" class:active={i === activeIndex}>
-                {startYear(entry.node.start)}
+              <li>
+                <button
+                  type="button"
+                  class="tl-year"
+                  class:active={i === activeIndex}
+                  aria-current={i === activeIndex ? 'true' : undefined}
+                  on:click={() => goToEntry(i)}
+                >
+                  <span aria-hidden="true">{startYear(entry.node.start)}</span>
+                  <span class="tl-year-name">{railLabel(entry.node)}</span>
+                </button>
               </li>
             {/each}
           </ol>
         </div>
-      </div>
+      </nav>
 
       <div class="tl-entries">
         {#each eras as era, eraIdx (era.id)}
@@ -265,13 +294,37 @@
   }
   .tl-years { list-style: none; display: flex; flex-direction: column; gap: 14px; }
   .tl-year {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 0;
+    text-align: left;
+    cursor: pointer;
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     letter-spacing: .05em;
     color: var(--fg-faint);
     transition: color .4s ease;
   }
+  .tl-year:hover { color: var(--accent); }
   .tl-year.active { color: var(--fg); }
+  .tl-year:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+  /* The year alone repeats; the full period and title are for screen readers. */
+  .tl-year-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
 
   /* Era dividers ---------------------------------------------------- */
   .tl-era { padding: 56px 0 8px; }

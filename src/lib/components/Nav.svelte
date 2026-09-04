@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { isPersonalPath } from '$lib/theme';
 
   type Section = { base: string; logo: string; links: Array<{ href: string; label: string }> };
 
@@ -26,21 +27,16 @@
     ],
   };
 
-  // The blog is personal writing, so it keeps the personal nav (and palette —
-  // see the matching rule in src/hooks.server.ts).
-  $: pathname = $page.url.pathname;
-  $: isPersonal =
-    pathname === '/personal' ||
-    pathname.startsWith('/personal/') ||
-    pathname === '/blog' ||
-    pathname.startsWith('/blog/');
+  // Same predicate that picks the palette, so the nav and the theme can never
+  // disagree about which side of the site you are on.
+  $: isPersonal = isPersonalPath($page.url.pathname);
   $: section = isPersonal ? PERSONAL : PROFESSIONAL;
   $: crossover = isPersonal
     ? { href: PROFESSIONAL.base, label: 'Professional' }
     : { href: PERSONAL.base, label: 'Personal' };
 </script>
 
-<nav>
+<nav aria-label="Main">
   <a href={section.logo} class="nav-logo">
     <span class="nav-logo-full">raulbuibas.dev</span>
     <span class="nav-logo-short">rb.dev</span>
