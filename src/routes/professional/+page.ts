@@ -15,8 +15,10 @@ const VIEW_IDS = storyViews.map((view) => view.id);
  * parameter changes. An unknown value falls back to the default view rather
  * than erroring — a mangled link should still show something.
  */
+const DEFAULT_VIEW: StoryViewId = 'chronology';
+
 function viewFrom(value: string | null): StoryViewId {
-  return VIEW_IDS.includes(value as StoryViewId) ? (value as StoryViewId) : 'story';
+  return VIEW_IDS.includes(value as StoryViewId) ? (value as StoryViewId) : DEFAULT_VIEW;
 }
 
 export const load: PageLoad = ({ url }) => {

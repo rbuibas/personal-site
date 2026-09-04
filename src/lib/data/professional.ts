@@ -637,15 +637,16 @@ export type StoryView = {
 };
 
 /**
- * `story` is the default and owns the bare `/professional` URL, so a shared
- * link lands on the telling rather than the CV.
+ * `chronology` is the default and owns the bare `/professional` URL, so that is
+ * where an unqualified link lands. The other two are reached by their query
+ * parameter; order here is the order they appear in the switcher.
  */
 export const storyViews: StoryView[] = [
   {
     id: 'chronology',
     name: 'Classic Chronology',
     blurb: 'the CV shape, if you must',
-    href: '/professional?view=chronology',
+    href: '/professional',
   },
   {
     id: 'turning-points',
@@ -658,7 +659,7 @@ export const storyViews: StoryView[] = [
     id: 'story',
     name: 'The Career Story',
     blurb: 'in order, over coffee',
-    href: '/professional',
+    href: '/professional?view=story',
   },
 ];
 
