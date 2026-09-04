@@ -612,3 +612,448 @@ export const contact = {
     { label: 'GitHub', href: 'https://github.com/rbuibas' },
   ],
 };
+
+/* ---------------------------------------------------------------------------
+   The three story views.
+
+   The same nineteen years, rendered three ways. `story` and `turningPoints`
+   are written narrative — they are not derived from the `career` tree above,
+   because the point of them is the telling, not the record. `chronology`
+   renders `education` + `career` unchanged, and stays the place where a fact
+   is authoritative: if a date moves, it moves there first and the prose is
+   rewritten to match.
+   --------------------------------------------------------------------------- */
+
+export type StoryViewId = 'story' | 'turning-points' | 'chronology';
+
+export type StoryView = {
+  id: StoryViewId;
+  name: string;
+  /** The one-line descriptor under the name in the switcher. */
+  blurb: string;
+  href: string;
+  /** Marks a telling that is still placeholder text, not Raul's own words. */
+  wip?: boolean;
+};
+
+/**
+ * `chronology` is the default and owns the bare `/professional` URL, so that is
+ * where an unqualified link lands. The other two are reached by their query
+ * parameter; order here is the order they appear in the switcher.
+ */
+export const storyViews: StoryView[] = [
+  {
+    id: 'chronology',
+    name: 'Classic Chronology',
+    blurb: 'the CV shape, if you must',
+    href: '/professional',
+  },
+  {
+    id: 'turning-points',
+    name: 'Turning Points',
+    blurb: 'six decisions · unfinished draft',
+    href: '/professional?view=turning-points',
+    wip: true,
+  },
+  {
+    id: 'story',
+    name: 'The Career Story',
+    blurb: 'in order, over coffee',
+    href: '/professional?view=story',
+  },
+];
+
+export type StoryChapter = {
+  id: string;
+  /** The margin's first line, and the only one set in the foreground colour. */
+  period: string;
+  /** Further margin lines — place, employer, stack. Kept short; they are asides. */
+  meta: string[];
+  /** A final margin line in the accent colour, for the role held now. */
+  accent?: string;
+  title: string;
+  paragraphs: string[];
+  /** An optional pulled line, set after the paragraph it follows. */
+  pull?: string;
+};
+
+export const storyIntro =
+  'This is my journey through IT, the way I would tell it over a coffee.';
+
+/**
+ * The climb, as a sequence rather than a timeline: the gaps between these
+ * moments are wildly uneven in years, so they are spaced evenly and the year
+ * is carried as a label. `level` is a rung on the ladder, 1 being closest to
+ * the metal — it is a judgement, not a measurement.
+ */
+export type LadderStep = {
+  year: string;
+  label: string;
+  level: number;
+};
+
+/** The highest rung used, so the diagram can scale itself. */
+export const ladderRungs = 7;
+
+export const abstractionLadder: LadderStep[] = [
+  { year: '2001', label: 'Logic gates', level: 1 },
+  { year: '2005', label: 'Boards, by hand', level: 2 },
+  { year: '2006', label: 'C, and algorithms', level: 4 },
+  { year: '2016', label: 'Compiler, assembler', level: 3 },
+  { year: '2017', label: 'Java, Eclipse tooling', level: 5 },
+  { year: '2018', label: 'Angular, the browser', level: 6 },
+  { year: '2019', label: 'JVM internals', level: 3 },
+  { year: '2023', label: 'Cloud, APIs, AI', level: 7 },
+];
+
+export const careerStoryHeading =
+  'Looking back, it is almost a clean climb up the abstraction ladder.';
+
+export const careerStory: StoryChapter[] = [
+  {
+    id: 'story-taking-apart',
+    period: 'the 1990s',
+    meta: ['Sremska Mitrovica', 'before any of it'],
+    title: 'Taking things apart',
+    paragraphs: [
+      'As a kid I liked to take things apart and try to rebuild them. I had a passion for ' +
+        'electronic devices. I would get old calculators, remotes, anything I could find, and ' +
+        'break them open. I still remember the first one I managed to fix: a shop calculator ' +
+        'that printed receipts on a roll of paper. I could not find the proper paper to test ' +
+        'it, so I cut strips out of an A4 sheet and fed them in, just to see it work.',
+      'Owning a computer was not an option, though I dreamt about it. I did get my hands on a ' +
+        'games console with a built-in QWERTY keyboard. There was no operating system and no ' +
+        'way to program anything, but some of the games were very good for practising typing. ' +
+        'So I did. I could type fast long before high school.',
+      'In the seventh grade I finally had access to a computer at school, a Commodore if I ' +
+        'remember correctly. I wrote my first lines in QBasic. I knew that was what I wanted ' +
+        'to do. There was no doubt.',
+    ],
+  },
+  {
+    id: 'story-highschool',
+    period: '2001 — 2005',
+    meta: ['Sremska Mitrovica', 'electrotechnical high school', 'automated systems'],
+    title: 'Electronics, but not by choice',
+    paragraphs: [
+      'There was no option in my region to go to a high school focused on informatics or ' +
+        'programming. An electrotechnical high school, in the section for automated systems, ' +
+        'was the closest I could get.',
+      'By accident it was a great choice. It laid a very good foundation for understanding ' +
+        'electronics and how devices work, long before learning to program them. The inside of ' +
+        'a computer, of a printer. Digital Electronics, after which I could draw a rudimentary ' +
+        'calculator out of nothing but logic gates — AND, OR, XOR, NOR. Before I wrote my ' +
+        'first real lines of code, I understood how a CPU works.',
+      'It ended with a diploma project that started as bare copper. I drew the circuit by ' +
+        'hand, made the board myself with acid rather than ordering one, burned a controller ' +
+        'chip and a flash ROM, and wrote the control software in Pascal.',
+      'Software and hardware cannot go one without the other. I would learn later that ' +
+        'software is often thought of completely independently of the hardware, especially at ' +
+        'the higher levels of abstraction.',
+    ],
+  },
+  {
+    id: 'story-bsc',
+    period: '2005 — 2008',
+    meta: [
+      'Timișoara',
+      'West University of Timișoara',
+      'BSc Informatics · 180 ECTS',
+    ],
+    title: 'University, in a language I barely spoke',
+    paragraphs: [
+      'I had left Romania at the age of five and only came back a few times since. At eighteen ' +
+        'I moved back for good and enrolled at the West University of Timișoara. When I ' +
+        'started my studies, the level at which I spoke Romanian was not better than that of a ' +
+        'five year old. It was definitely not good enough for university. It was an ' +
+        'interesting challenge, and quite a struggle in the first months.',
+      'The studies themselves were a dream for me. We started with algorithms, databases and ' +
+        'the C programming language. Later came more complex things, including image ' +
+        'processing and my first AI algorithms. I enjoyed every course.',
+      'My thesis was an image processing application written in C# — inversion, greyscale, ' +
+        'blur, histogram equalisation, and the statistics to inspect what it had done. It was ' +
+        'a working application rather than a paper, which was the point.',
+      'The degree lasted three years. I started an internship after the second one, was hired ' +
+        'by the company not long after, and finished my studies part time while working.',
+    ],
+  },
+  {
+    id: 'story-msc',
+    period: '2008 — 2010',
+    meta: [
+      'Timișoara',
+      'West University of Timișoara',
+      'MSc Informatics · Software Engineering',
+    ],
+    title: 'Four hundred to one',
+    paragraphs: [
+      'The master\u2019s was higher up: software lifecycle, graphics, and hints of product ' +
+        'management. I kept working the whole way through it, on reduced hours.',
+      'I also kept going with the C# image processing application and added a compression ' +
+        'algorithm to it. The pixels went away entirely. Images were stored as polygon ' +
+        'vertices and colour, with an evolutionary search looking for an arrangement that ' +
+        'scored close enough to the original against a configurable quality threshold. It ' +
+        'reached roughly four hundred to one.',
+      'When I did the research I did not find a practical implementation of the evolutionary ' +
+        'algorithm done the way I had done it. The notion existed. What I did not find ' +
+        'anywhere was the willingness to accept that much compromise for the sake of a 400:1 ' +
+        'ratio, and the proposal to use it for thumbnails.',
+    ],
+  },
+  {
+    id: 'story-printer',
+    period: '2007 — 2016',
+    meta: ['Timișoara', 'Saguaro Technology', 'C · IPDS · nine years'],
+    title: 'Nine years inside a printer',
+    paragraphs: [
+      'I arrived as a summer intern writing a multithreaded backup server in C and left nine ' +
+        'years later as the person who owned colour. In between: printer-side firmware for ' +
+        'high-end production machines — a resource database, a caching layer, font handling — ' +
+        'and then the same functionality carried across x86, MIPS and PowerPC, on VxWorks, ' +
+        'FreeBSD and SLES, because the customer’s machine was whichever one it happened to be.',
+      'The last four years were colour: halftones, ICC profiles, colour management resources. ' +
+        'It is the hardest kind of correctness I have worked on, because nothing crashes.',
+    ],
+    pull:
+      'A page comes out, and someone who has looked at that shade every day for twenty years ' +
+      'tells you it is wrong. And they are right.',
+  },
+  {
+    id: 'story-compiler',
+    period: '2016 — 2017',
+    meta: ['CyberTHOR Studios', 'GNU toolchain, for Renesas'],
+    title: 'I stopped writing C and started compiling it',
+    paragraphs: [
+      'After nine years of writing C, I went to work on the thing that turns it into ' +
+        'instructions: GNU compiler and debugger components for three embedded architectures. ' +
+        'Within a year I was doing Eclipse toolchain work in Java at the same time — my first ' +
+        'real climb up the abstraction ladder — leading a team for the first time, and quietly ' +
+        'automating our quarterly release down to a single click.',
+      'Three roles running at once for the last ten months of it. It is the busiest I have ' +
+        'been and the fastest I have ever learned.',
+    ],
+  },
+  {
+    id: 'story-generator',
+    period: '2017 — 2018',
+    meta: ['Elektrobit', 'AUTOSAR tooling'],
+    title: 'The generator, not the generated',
+    paragraphs: [
+      'A short stretch in automotive, one step back from the vehicle: Eclipse-based Java ' +
+        'tooling that takes an architectural definition and emits the C++ that ends up in a ' +
+        'car. Nobody outside the building ever sees this layer, and I liked it enormously. If ' +
+        'you have read this far you can probably guess why.',
+    ],
+  },
+  {
+    id: 'story-france',
+    period: '2018 — 2019',
+    meta: ['Timișoara → Nice', 'Amadeus'],
+    title: 'A new country and a new language, in the same month',
+    paragraphs: [
+      'In June 2018 I moved from Romania to France, and from embedded C to Angular in a ' +
+        'browser, on a real-time airline merchandising platform. None of what I knew about ' +
+        'registers helped. All of what I knew about reading a system I had not written did.',
+      'It is the only stretch of my career spent in the front end. I am glad I did it, and ' +
+        'glad it was a season rather than a home. The part I still tell people about is not ' +
+        'the framework — it is arguing successfully for analytics that did not follow anyone ' +
+        'around.',
+    ],
+  },
+  {
+    id: 'story-platform',
+    period: '2019 — 2023',
+    meta: ['Nice', 'JVM · Quarkus · OpenShift'],
+    title: 'Back down, then out',
+    paragraphs: [
+      'Two years on JVM internals, garbage collectors and production incident forensics — the ' +
+        'years I learned to argue with a design instead of a tuning flag. Then a greenfield ' +
+        'service layer built from an empty repository, and, a year after that, the deliberately ' +
+        'unglamorous decision to rebuild it on the standard internal platform instead of the ' +
+        'clever bespoke one we already had running.',
+      'Six microservices, a migration nobody outside the team noticed, and the first AI chatbot ' +
+        'to ship inside the product. That last one turned out to matter.',
+    ],
+  },
+  {
+    id: 'story-now',
+    period: '2023 — now',
+    meta: ['Nice'],
+    accent: 'Principal Engineer',
+    title: 'The product started answering back',
+    paragraphs: [
+      'I lead the technical side of an AI assistant that business travellers use every day, and ' +
+        'I set the architectural direction for it across the programme. The work is not the ' +
+        'model. The work is retrieval that returns the right paragraph, a framework dependency ' +
+        'cut out from under three teams without downtime, and prototypes built small so that ' +
+        'nobody has to guess.',
+      'Which is, I notice, the same job as the board. Build the thing underneath, and ' +
+        'understand the constraints below that.',
+    ],
+  },
+];
+
+export type TurningPoint = {
+  id: string;
+  /** Rendered as the oversized numeral in the left rail. */
+  index: string;
+  when: string;
+  title: string;
+  happened: string;
+  changed: string;
+};
+
+export const turningPointsIntro =
+  'A CV lists where I was standing. These are the times I chose something that changed what I was.';
+
+export const turningPoints: TurningPoint[] = [
+  {
+    id: 'tp-iron',
+    index: '01',
+    when: '2001 · school of automation',
+    title: 'I picked the soldering iron over the textbook',
+    happened:
+      'I chose the school of automatic control systems instead of general secondary ' +
+      'schooling. It ended with a diploma project built from bare copper: circuit drawn by ' +
+      'hand, board etched in acid, controller and flash ROM burned, control software written ' +
+      'in Pascal.',
+    changed:
+      'It set the reflex I have never lost: never trust a layer you have not opened. ' +
+      'Everything after this is the same instinct pointed at bigger boxes.',
+  },
+  {
+    id: 'tp-stayed',
+    index: '02',
+    when: '2007 — 2016 · nine years, one product',
+    title: 'I stayed nine years when the advice was to move every two',
+    happened:
+      'Intern to senior on printer firmware in C: caching and resource handling, then the same ' +
+      'code carried onto x86, MIPS and PowerPC across three operating systems, then four years ' +
+      'on colour — halftones, ICC profiles, colour management.',
+    changed:
+      'Nine years is long enough to meet your own decisions coming back. Colour taught me the ' +
+      'kind of bug that never crashes — it just comes out wrong, and a customer can see it.',
+  },
+  {
+    id: 'tp-compiler',
+    index: '03',
+    when: '2016 · after nine years of writing it',
+    title: 'I stopped writing C and started compiling it',
+    happened:
+      'GNU compiler and debugger components for three embedded architectures — and within a ' +
+      'year, Eclipse toolchain work in Java alongside it, a team to lead, and a quarterly ' +
+      'release turned into one click. Three roles at once for the last ten months of it.',
+    changed:
+      'It broke the idea that I was a C engineer. I was someone who takes lids off, and C had ' +
+      'just been the lid in front of me for nine years.',
+  },
+  {
+    id: 'tp-france',
+    index: '04',
+    when: 'June 2018 · one month, two migrations',
+    title: 'I left the country and the language at the same time',
+    happened:
+      'Romania to France, embedded C to Angular, printers to airline retailing — all in the ' +
+      'same month. Eleven years of low-level instinct, and suddenly the whole job was in a ' +
+      'browser.',
+    changed:
+      'It proved the transferable thing was never the language. It was the habit of reading a ' +
+      'system nobody explains to you — and being willing to be the least experienced person in ' +
+      'the room again.',
+  },
+  {
+    id: 'tp-jvm',
+    index: '05',
+    when: '2019 · one year into the browser',
+    title: 'I went back down, into the JVM',
+    happened:
+      'Two years on JVM internals, profiling, garbage collector studies and forensics on ' +
+      'critical production incidents — being the person called when nobody could explain the ' +
+      'pause.',
+    changed:
+      'I stopped answering with tuning parameters and started answering with design ' +
+      'recommendations. That is the line between an engineer and an architect, and I crossed ' +
+      'it here.',
+  },
+  {
+    id: 'tp-boring',
+    index: '06',
+    when: '2022 · with a working product already shipping',
+    title: 'We chose the boring platform on purpose',
+    happened:
+      'We rebuilt a live integration onto the standard internal platform instead of the ' +
+      'bespoke stack we had already made work — six microservices, and a migration nobody ' +
+      'outside the team noticed.',
+    changed:
+      'The clever thing and the right thing are not always the same object. Choosing the ' +
+      'standard path is the least glamorous decision on this page, and the one I would defend ' +
+      'hardest.',
+  },
+];
+
+export const turningPointsCoda = {
+  eyebrow: 'and now',
+  title: 'Which is how I ended up here',
+  paragraphs: [
+    'Leading the technical side of an AI assistant that business travellers use every day, and ' +
+      'setting where its architecture goes next. Retrieval that returns the right paragraph. A ' +
+      'framework dependency cut out from under three teams with no downtime. Prototypes built ' +
+      'small so nobody has to guess.',
+    'Six decisions, and every one of them was the same decision: go and look underneath.',
+  ],
+};
+
+/**
+ * The essays behind the story. Each is a question the whole career keeps
+ * asking; the posts themselves are still to be written, so an entry without a
+ * `slug` renders as a stub rather than a dead link. Adding the post to
+ * `src/posts/` and setting `slug` here turns it into a real entry — and the
+ * date and read time then come from that file's frontmatter.
+ */
+export type WritingTopic = {
+  id: string;
+  title: string;
+  standfirst: string;
+  /** Matches a filename in `src/posts/`, once the post exists. */
+  slug?: string;
+};
+
+/** A topic, plus the post's frontmatter once that post exists. */
+export type WritingEntry = WritingTopic & {
+  post?: { date: string; readTime: string };
+};
+
+export const writingIntro =
+  'Nineteen years is really only four questions, asked in whatever room I happen to be ' +
+  'standing in. Each one gets an essay of its own.';
+
+export const writingTopics: WritingTopic[] = [
+  {
+    id: 'q-underneath',
+    title: 'What is underneath this?',
+    standfirst:
+      'Every job I have taken has been one layer below the last one that made me curious. The ' +
+      'board, the firmware, the compiler, the runtime, the platform.',
+  },
+  {
+    id: 'q-quiet-failures',
+    title: 'Is it right when nothing crashes?',
+    standfirst:
+      'A colour that is subtly off. A pause that only appears under real traffic. An answer ' +
+      'that is fluent and wrong. The failures I have spent most of my life on are the quiet ones.',
+  },
+  {
+    id: 'q-tools',
+    title: 'Can I build the thing that builds the thing?',
+    standfirst:
+      "Compilers, generators, release automation, playgrounds for other people's experiments. " +
+      'Given the choice, I would rather own the tool than borrow it.',
+  },
+  {
+    id: 'q-machines',
+    title: 'How much can a machine work out for itself?',
+    standfirst:
+      "Older than it looks: a master's thesis that threw the pixels away and let a search find " +
+      'its own representation, and a day job doing a version of the same thing sixteen years later.',
+  },
+];

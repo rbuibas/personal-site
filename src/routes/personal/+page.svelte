@@ -16,7 +16,7 @@
 <Hero />
 <Work />
 <About />
-<Writing posts={data.posts} />
+<Writing posts={data.posts} id="stories" label="Stories" />
 <IrcChat />
 
 <footer class="footer" id="contact">

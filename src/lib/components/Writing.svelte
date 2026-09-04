@@ -1,14 +1,17 @@
 <script lang="ts">
   export let posts: Array<{ slug: string; title: string; date: string; readTime: string }> = [];
+  /** The personal page calls this section "Stories"; the anchor follows the label. */
+  export let id = 'writing';
+  export let label = 'Writing';
 
   function formatDate(dateStr: string) {
     return new Date(dateStr).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
   }
 </script>
 
-<section class="section section--surface" id="writing">
+<section class="section section--surface" {id}>
   <div class="section-inner">
-    <div class="section-label reveal">Writing</div>
+    <div class="section-label reveal">{label}</div>
     <div class="posts">
       {#each posts as post}
         <a href="/blog/{post.slug}" class="post reveal">
