@@ -864,18 +864,29 @@ export const careerStory: StoryChapter[] = [
     ],
   },
   {
-    id: 'story-platform',
-    period: '2019 — 2023',
-    meta: ['Nice', 'JVM · Quarkus · OpenShift'],
+    id: 'story-jvm',
+    period: '2019 — 2021',
+    meta: ['Nice', 'JVM internals · performance'],
     title: 'Dove into the fascinating complexities of JVM',
     paragraphs: [
-      'Then I went back down, into the JVM. Two years on internals, profiling, garbage ' +
-        'collector behaviour and forensics on production incidents. I came out of it ' +
-        'answering with design changes rather than tuning flags.',
-      'After that, a service layer built from an empty repository, which moved from Spring ' +
-        'to Quarkus while we were still building it. A year later we rebuilt it on the ' +
-        'standard internal platform instead of the one we had made ourselves. Six ' +
-        'microservices, and nobody outside the team noticed the migration.',
+      'Then I went back down, into the JVM. Roughly a year of internals, profiling and ' +
+        'garbage collector behaviour, together with the performance work that came with it, ' +
+        'and forensics on production incidents when nobody could explain what had happened.',
+      'I came out of it answering with design changes rather than tuning flags.',
+    ],
+  },
+  {
+    id: 'story-cloud',
+    period: '2021 — 2023',
+    meta: ['Nice', 'Quarkus · OpenShift · Kafka'],
+    title: 'The famous cloud and the birth of a chat bot',
+    paragraphs: [
+      'A service layer built from an empty repository, which moved from Spring to Quarkus ' +
+        'while we were still building it. OpenShift underneath, Keycloak for authentication, ' +
+        'and an observability baseline in place from the start.',
+      'A year later we rebuilt it on the standard internal platform instead of the one we ' +
+        'had made ourselves. Six microservices, and nobody outside the team noticed the ' +
+        'migration.',
       'The first AI chatbot in the product shipped in that period. That one turned out to ' +
         'matter.',
     ],
