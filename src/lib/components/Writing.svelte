@@ -6,7 +6,7 @@
   }
 </script>
 
-<section class="section" id="writing" style="background: #fff">
+<section class="section section--surface" id="writing">
   <div class="section-inner">
     <div class="section-label reveal">Writing</div>
     <div class="posts">
@@ -45,7 +45,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--fg);
     margin-bottom: 6px;
     transition: color .2s;
   }
@@ -53,11 +53,11 @@
   .post-meta {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
   }
   .post-arrow {
     font-size: 20px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     transition: color .2s, transform .2s;
     flex-shrink: 0;
   }
@@ -65,7 +65,7 @@
   .empty {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     letter-spacing: .05em;
     padding: 32px 0;
   }

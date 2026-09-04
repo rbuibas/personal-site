@@ -1,12 +1,33 @@
+/* ---------------------------------------------------------------
+   Palette. Token names are semantic so a second theme can swap
+   them wholesale. :root is the personal (warm) theme; the
+   professional (cool) theme is applied via data-theme on <html>,
+   set server-side in src/hooks.server.ts.
+   --------------------------------------------------------------- */
 :root {
-  --cream: #f5f2ec;
-  --cream-dark: #ede9e1;
-  --ink: #1c1a17;
-  --ink-light: #6b6457;
-  --ink-faint: #b0a898;
+  --bg: #f5f2ec;
+  --bg-alt: #ede9e1;
+  --surface: #ffffff;
+  --fg: #1c1a17;
+  --fg-muted: #6b6457;
+  --fg-faint: #b0a898;
   --accent: #c17f4a;
-  --accent-light: #f0e4d4;
+  --accent-soft: #f0e4d4;
   --border: #e0d9ce;
+  --nav-bg: rgba(245, 242, 236, .92);
+}
+
+[data-theme="professional"] {
+  --bg: #f2f5f8;
+  --bg-alt: #e6ecf2;
+  --surface: #ffffff;
+  --fg: #14202b;
+  --fg-muted: #55636f;
+  --fg-faint: #9aa8b5;
+  --accent: #2f6f9f;
+  --accent-soft: #dce8f2;
+  --border: #d3dde6;
+  --nav-bg: rgba(242, 245, 248, .92);
 }
 
 *, *::before, *::after {
@@ -18,8 +39,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--fg);
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   line-height: 1.7;
@@ -56,6 +77,9 @@ body {
   padding: 96px 48px;
   border-top: 1px solid var(--border);
 }
+.section--surface {
+  background: var(--surface);
+}
 .section-inner {
   max-width: 900px;
   margin: 0 auto;
@@ -65,7 +89,7 @@ body {
   font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--fg-faint);
   margin-bottom: 48px;
   display: flex;
   align-items: center;

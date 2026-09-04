@@ -1,11 +1,8 @@
-import type { PageLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
 
-export const load: PageLoad = async () => {
-  const modules = import.meta.glob('/src/posts/*.md', { eager: true });
-  const posts = Object.entries(modules).map(([path, mod]: [string, any]) => {
-    const slug = path.replace('/src/posts/', '').replace('.md', '');
-    return { slug, ...mod.metadata };
-  });
-  posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  return { posts: posts.slice(0, 3) };
+// The professional site is the front door; the personal one lives at /personal.
+// 307 (not 308) on purpose — a permanent redirect gets hard-cached by browsers
+// and would be painful to undo if the landing target ever changes.
+export const load = () => {
+  redirect(307, '/professional');
 };

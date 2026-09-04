@@ -12,7 +12,7 @@
 
 <main class="blog-main">
   <div class="blog-inner">
-    <a href="/" class="back">← Back</a>
+    <a href="/personal" class="back">← Back</a>
     <h1 class="blog-title">Writing</h1>
     <div class="posts">
       {#each data.posts as post}
@@ -34,25 +34,25 @@
   .blog-main {
     min-height: 100vh;
     padding: 120px 48px 96px;
-    background: var(--cream);
+    background: var(--bg);
   }
   .blog-inner { max-width: 720px; margin: 0 auto; }
   .back {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     text-decoration: none;
     letter-spacing: .05em;
     transition: color .2s;
     display: inline-block;
     margin-bottom: 40px;
   }
-  .back:hover { color: var(--ink); }
+  .back:hover { color: var(--fg); }
   .blog-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(36px, 5vw, 56px);
     font-weight: 600;
-    color: var(--ink);
+    color: var(--fg);
     margin-bottom: 48px;
     letter-spacing: -.02em;
   }
@@ -72,7 +72,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--fg);
     margin-bottom: 6px;
     transition: color .2s;
   }
@@ -80,11 +80,11 @@
   .post-meta {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
   }
   .post-arrow {
     font-size: 20px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     transition: color .2s, transform .2s;
     flex-shrink: 0;
   }
@@ -92,7 +92,7 @@
   .empty {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     padding: 32px 0;
   }
 

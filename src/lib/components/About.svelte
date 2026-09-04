@@ -46,7 +46,7 @@
   .about-photo {
     width: 100%;
     aspect-ratio: 3/4;
-    background: var(--cream-dark);
+    background: var(--bg-alt);
     border-radius: 2px;
     display: flex;
     align-items: center;
@@ -57,7 +57,7 @@
   .about-photo-label {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     letter-spacing: .1em;
   }
   .about-photo-corner {
@@ -73,22 +73,22 @@
     font-family: 'DM Mono', monospace;
     font-size: 10px;
     letter-spacing: 2px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     text-transform: uppercase;
     text-align: center;
   }
   .about-text p {
     font-size: 15px;
-    color: var(--ink-light);
+    color: var(--fg-muted);
     line-height: 1.9;
     margin-bottom: 20px;
   }
-  .about-text p strong { color: var(--ink); font-weight: 500; }
+  .about-text p strong { color: var(--fg); font-weight: 500; }
   .currently-box {
     margin-top: 32px;
     padding: 20px 24px;
     border-left: 2px solid var(--accent);
-    background: var(--accent-light);
+    background: var(--accent-soft);
     border-radius: 0 4px 4px 0;
   }
   .currently-box .cl {
@@ -99,7 +99,7 @@
     text-transform: uppercase;
     margin-bottom: 8px;
   }
-  .currently-box p { font-size: 14px; color: var(--ink); line-height: 1.7; margin: 0; }
+  .currently-box p { font-size: 14px; color: var(--fg); line-height: 1.7; margin: 0; }
   .timeline { margin-top: 40px; display: flex; flex-direction: column; }
   .tl-item {
     display: flex;
@@ -111,13 +111,13 @@
   .tl-year {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     width: 80px;
     flex-shrink: 0;
     padding-top: 2px;
   }
-  .tl-text { font-size: 13px; color: var(--ink-light); }
-  .tl-text strong { color: var(--ink); font-weight: 500; }
+  .tl-text { font-size: 13px; color: var(--fg-muted); }
+  .tl-text strong { color: var(--fg); font-weight: 500; }
 
   @media (max-width: 768px) {
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
