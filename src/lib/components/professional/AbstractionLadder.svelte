@@ -6,11 +6,11 @@
      carries its year as a label. Drawing it to scale would bunch four moves
      into 2016–2019 and leave a decade of empty paper. */
   const W = 1000;
-  const H = 320;
+  const H = 360;
   const X0 = 62;
   const X1 = 938;
-  const TOP = 88;
-  const BOTTOM = 252;
+  const TOP = 70;
+  const BOTTOM = 290;
 
   const step = (X1 - X0) / (abstractionLadder.length - 1);
   const rungGap = (BOTTOM - TOP) / (ladderRungs - 1);
@@ -28,13 +28,24 @@
   const sitsAbove = (i: number) =>
     (i === 0 || levels[i - 1] <= levels[i]) && (i === last || levels[i + 1] <= levels[i]);
 
-  const points = abstractionLadder.map((s, i) => ({
-    ...s,
-    x: x(i),
-    y: y(s.level),
-    above: sitsAbove(i),
-    anchor: i === 0 ? 'start' : i === last ? 'end' : 'middle',
-  }));
+  /* Which way a below-label extends matters once the points are close
+     together. On a rising run the line owns the space below and to the left,
+     so the text goes right; on a falling run it owns below-right, so the text
+     goes left. Only at a trough, where both segments climb away, can it sit
+     centred. */
+  const anchorFor = (i: number, above: boolean) => {
+    if (i === 0) return 'start';
+    if (i === last) return 'end';
+    if (above) return 'middle';
+    const trough = levels[i - 1] > levels[i] && levels[i + 1] > levels[i];
+    if (trough) return 'middle';
+    return levels[i + 1] > levels[i] ? 'start' : 'end';
+  };
+
+  const points = abstractionLadder.map((s, i) => {
+    const above = sitsAbove(i);
+    return { ...s, x: x(i), y: y(s.level), above, anchor: anchorFor(i, above) };
+  });
 
   const path = points.map((p) => `${p.x},${p.y}`).join(' ');
 </script>
@@ -46,7 +57,7 @@
 
   <div class="al-scroll">
     <svg viewBox="0 0 {W} {H}" class="al-svg" role="img"
-      aria-label="The path of my career across levels of abstraction: logic gates in 2001, boards by hand in 2005, C and algorithms in 2006, down to compiler and assembler in 2016, up to Java and Eclipse tooling in 2017, up to Angular in 2018, back down to JVM internals in 2019, then up to cloud, APIs and AI in 2023.">
+      aria-label="The path of my career across levels of abstraction: logic gates in 2001, boards by hand in 2005, C and algorithms in 2006, down to compiler and assembler in 2016, up to Java and Eclipse tooling in 2017, up to Angular in 2018, back down to JVM internals in 2019, up to cloud and APIs in 2022, and a two-rung jump to generative AI and agents in 2024.">
 
       <!-- Rungs. Recessive on purpose: they are a reference, not the subject. -->
       {#each Array(ladderRungs) as _, r}

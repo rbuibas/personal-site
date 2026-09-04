@@ -695,7 +695,7 @@ export type LadderStep = {
 };
 
 /** The highest rung used, so the diagram can scale itself. */
-export const ladderRungs = 7;
+export const ladderRungs = 9;
 
 export const abstractionLadder: LadderStep[] = [
   { year: '2001', label: 'Logic gates', level: 1 },
@@ -705,7 +705,8 @@ export const abstractionLadder: LadderStep[] = [
   { year: '2017', label: 'Java, Eclipse tooling', level: 5 },
   { year: '2018', label: 'Angular, the browser', level: 6 },
   { year: '2019', label: 'JVM internals', level: 4 },
-  { year: '2023', label: 'Cloud, APIs, AI', level: 7 },
+  { year: '2022', label: 'Cloud and APIs', level: 7 },
+  { year: '2024', label: 'GenAI and agents', level: 9 },
 ];
 
 export const careerStoryHeading =
@@ -787,7 +788,7 @@ export const careerStory: StoryChapter[] = [
       'West University of Timișoara',
       'MSc Informatics · Software Engineering',
     ],
-    title: 'Four hundred to one',
+    title: 'How much of a compression is too much?',
     paragraphs: [
       'The master\u2019s was further up: software lifecycle, graphics, some product ' +
         'management. I kept working all the way through it, on reduced hours.',
@@ -805,7 +806,7 @@ export const careerStory: StoryChapter[] = [
     id: 'story-printer',
     period: '2007 — 2016',
     meta: ['Timișoara', 'Saguaro Technology', 'C · IPDS · nine years'],
-    title: 'Nine years inside a printer',
+    title: 'Nine years inside a printer, without even a hint of a UI',
     paragraphs: [
       'I joined as a summer intern and wrote a multithreaded backup server in C. I stayed ' +
         'nine years.',
@@ -823,7 +824,7 @@ export const careerStory: StoryChapter[] = [
     id: 'story-compiler',
     period: '2016 — 2017',
     meta: ['CyberTHOR Studios', 'GNU toolchain, for Renesas'],
-    title: 'From writing C to compiling it',
+    title: 'From writing C to writing compiler optimizations',
     paragraphs: [
       'After nine years of writing C I went to work on the thing that compiles it. GNU ' +
         'compiler and debugger components, for three embedded architectures.',
@@ -838,7 +839,7 @@ export const careerStory: StoryChapter[] = [
     id: 'story-generator',
     period: '2017 — 2018',
     meta: ['Elektrobit', 'AUTOSAR tooling'],
-    title: 'Tooling, one step back from the car',
+    title: 'Tools, and how to make people not hate them',
     paragraphs: [
       'A short stretch in automotive, one step back from the vehicle. Eclipse based Java ' +
         'tooling for AUTOSAR configuration, where you take an architectural definition and ' +
@@ -851,7 +852,7 @@ export const careerStory: StoryChapter[] = [
     id: 'story-france',
     period: '2018 — 2019',
     meta: ['Timișoara → Nice', 'Amadeus'],
-    title: 'A new country and a new language, in the same month',
+    title: 'New country, new language, new life, new frontend framework',
     paragraphs: [
       'In June 2018 I moved from Romania to France, and from embedded C to Angular in a ' +
         'browser, on a real-time airline merchandising platform. Both in the same month.',
@@ -866,7 +867,7 @@ export const careerStory: StoryChapter[] = [
     id: 'story-platform',
     period: '2019 — 2023',
     meta: ['Nice', 'JVM · Quarkus · OpenShift'],
-    title: 'Down into the JVM, then out into services',
+    title: 'Dove into the fascinating complexities of JVM',
     paragraphs: [
       'Then I went back down, into the JVM. Two years on internals, profiling, garbage ' +
         'collector behaviour and forensics on production incidents. I came out of it ' +
@@ -884,7 +885,7 @@ export const careerStory: StoryChapter[] = [
     period: '2023 — now',
     meta: ['Nice'],
     accent: 'Principal Engineer',
-    title: 'Leading the AI work',
+    title: 'Contributing to effective AI adoption and usage',
     paragraphs: [
       'I lead the technical side of an AI assistant that business travellers use every day, ' +
         'and I set the AI architectural direction across the programme. I was made Principal ' +
