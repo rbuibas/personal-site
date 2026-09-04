@@ -789,17 +789,16 @@ export const careerStory: StoryChapter[] = [
     ],
     title: 'Four hundred to one',
     paragraphs: [
-      'The master\u2019s was higher up: software lifecycle, graphics, and hints of product ' +
-        'management. I kept working the whole way through it, on reduced hours.',
-      'I also kept going with the C# image processing application and added a compression ' +
-        'algorithm to it. The pixels went away entirely. Images were stored as polygon ' +
-        'vertices and colour, with an evolutionary search looking for an arrangement that ' +
-        'scored close enough to the original against a configurable quality threshold. It ' +
-        'reached roughly four hundred to one.',
-      'When I did the research I did not find a practical implementation of the evolutionary ' +
-        'algorithm done the way I had done it. The notion existed. What I did not find ' +
-        'anywhere was the willingness to accept that much compromise for the sake of a 400:1 ' +
-        'ratio, and the proposal to use it for thumbnails.',
+      'The master\u2019s was further up: software lifecycle, graphics, some product ' +
+        'management. I kept working all the way through it, on reduced hours.',
+      'I carried on with the C# image processing application and added a compression ' +
+        'algorithm to it. The pixels went away entirely. An image was stored as polygon ' +
+        'vertices and colour, and an evolutionary search looked for an arrangement close ' +
+        'enough to the original, against a quality threshold I could set. It got to roughly ' +
+        'four hundred to one.',
+      'When I did the research I did not find a practical implementation done the way I had ' +
+        'done it. The notion existed. What I did not find was anyone willing to accept that ' +
+        'much compromise for a 400:1 ratio, or the proposal to use it for thumbnails.',
     ],
   },
   {
@@ -808,43 +807,44 @@ export const careerStory: StoryChapter[] = [
     meta: ['Timișoara', 'Saguaro Technology', 'C · IPDS · nine years'],
     title: 'Nine years inside a printer',
     paragraphs: [
-      'I arrived as a summer intern writing a multithreaded backup server in C and left nine ' +
-        'years later as the person who owned colour. In between: printer-side firmware for ' +
-        'high-end production machines — a resource database, a caching layer, font handling — ' +
-        'and then the same functionality carried across x86, MIPS and PowerPC, on VxWorks, ' +
-        'FreeBSD and SLES, because the customer’s machine was whichever one it happened to be.',
-      'The last four years were colour: halftones, ICC profiles, colour management resources. ' +
-        'It is the hardest kind of correctness I have worked on, because nothing crashes.',
+      'I joined as a summer intern and wrote a multithreaded backup server in C. I stayed ' +
+        'nine years.',
+      'Most of that time was printer firmware for high end production machines, in C. A ' +
+        'resource database and its caching, a parser for resource containers, font handling. ' +
+        'Later the same functionality had to run on x86, MIPS and PowerPC, on VxWorks, ' +
+        'FreeBSD and SLES, because the machine at the customer was whichever one it was.',
+      'The last four years were colour. Halftones, ICC profiles, colour management ' +
+        'resources. Nothing crashes when the colour is wrong. The page comes out and the ' +
+        'shade is simply off, and someone will notice. Chasing that on deployed systems, ' +
+        'with valgrind and GDB, was slow work.',
     ],
-    pull:
-      'A page comes out, and someone who has looked at that shade every day for twenty years ' +
-      'tells you it is wrong. And they are right.',
   },
   {
     id: 'story-compiler',
     period: '2016 — 2017',
     meta: ['CyberTHOR Studios', 'GNU toolchain, for Renesas'],
-    title: 'I stopped writing C and started compiling it',
+    title: 'From writing C to compiling it',
     paragraphs: [
-      'After nine years of writing C, I went to work on the thing that turns it into ' +
-        'instructions: GNU compiler and debugger components for three embedded architectures. ' +
-        'Within a year I was doing Eclipse toolchain work in Java at the same time — my first ' +
-        'real climb up the abstraction ladder — leading a team for the first time, and quietly ' +
-        'automating our quarterly release down to a single click.',
-      'Three roles running at once for the last ten months of it. It is the busiest I have ' +
-        'been and the fastest I have ever learned.',
+      'After nine years of writing C I went to work on the thing that compiles it. GNU ' +
+        'compiler and debugger components, for three embedded architectures.',
+      'Within a year I was also doing Eclipse toolchain work in Java, which was my first ' +
+        'real step up the abstraction ladder, and leading the team doing it. Then I took ' +
+        'over the quarterly releases as well, and automated the delivery down to one click.',
+      'Three roles at once for the last ten months. It was the busiest I have been, and I ' +
+        'have never learned faster.',
     ],
   },
   {
     id: 'story-generator',
     period: '2017 — 2018',
     meta: ['Elektrobit', 'AUTOSAR tooling'],
-    title: 'The generator, not the generated',
+    title: 'Tooling, one step back from the car',
     paragraphs: [
-      'A short stretch in automotive, one step back from the vehicle: Eclipse-based Java ' +
-        'tooling that takes an architectural definition and emits the C++ that ends up in a ' +
-        'car. Nobody outside the building ever sees this layer, and I liked it enormously. If ' +
-        'you have read this far you can probably guess why.',
+      'A short stretch in automotive, one step back from the vehicle. Eclipse based Java ' +
+        'tooling for AUTOSAR configuration, where you take an architectural definition and ' +
+        'generate the C++ that ends up in the car.',
+      'The product was still in R&D at that point. Nobody outside the building sees this ' +
+        'layer, and I liked working on it.',
     ],
   },
   {
@@ -854,27 +854,29 @@ export const careerStory: StoryChapter[] = [
     title: 'A new country and a new language, in the same month',
     paragraphs: [
       'In June 2018 I moved from Romania to France, and from embedded C to Angular in a ' +
-        'browser, on a real-time airline merchandising platform. None of what I knew about ' +
-        'registers helped. All of what I knew about reading a system I had not written did.',
-      'It is the only stretch of my career spent in the front end. I am glad I did it, and ' +
-        'glad it was a season rather than a home. The part I still tell people about is not ' +
-        'the framework — it is arguing successfully for analytics that did not follow anyone ' +
-        'around.',
+        'browser, on a real-time airline merchandising platform. Both in the same month.',
+      'Nothing I knew about registers was any use. What was of use was being able to read a ' +
+        'system nobody had explained to me. That is the part that carried over.',
+      'It is the only stretch of my career spent in the front end. On the next product I ' +
+        'proposed Matomo for analytics, so we could measure what we needed without following ' +
+        'anyone around. It was adopted.',
     ],
   },
   {
     id: 'story-platform',
     period: '2019 — 2023',
     meta: ['Nice', 'JVM · Quarkus · OpenShift'],
-    title: 'Back down, then out',
+    title: 'Down into the JVM, then out into services',
     paragraphs: [
-      'Two years on JVM internals, garbage collectors and production incident forensics — the ' +
-        'years I learned to argue with a design instead of a tuning flag. Then a greenfield ' +
-        'service layer built from an empty repository, and, a year after that, the deliberately ' +
-        'unglamorous decision to rebuild it on the standard internal platform instead of the ' +
-        'clever bespoke one we already had running.',
-      'Six microservices, a migration nobody outside the team noticed, and the first AI chatbot ' +
-        'to ship inside the product. That last one turned out to matter.',
+      'Then I went back down, into the JVM. Two years on internals, profiling, garbage ' +
+        'collector behaviour and forensics on production incidents. I came out of it ' +
+        'answering with design changes rather than tuning flags.',
+      'After that, a service layer built from an empty repository, which moved from Spring ' +
+        'to Quarkus while we were still building it. A year later we rebuilt it on the ' +
+        'standard internal platform instead of the one we had made ourselves. Six ' +
+        'microservices, and nobody outside the team noticed the migration.',
+      'The first AI chatbot in the product shipped in that period. That one turned out to ' +
+        'matter.',
     ],
   },
   {
@@ -882,15 +884,18 @@ export const careerStory: StoryChapter[] = [
     period: '2023 — now',
     meta: ['Nice'],
     accent: 'Principal Engineer',
-    title: 'The product started answering back',
+    title: 'Leading the AI work',
     paragraphs: [
-      'I lead the technical side of an AI assistant that business travellers use every day, and ' +
-        'I set the architectural direction for it across the programme. The work is not the ' +
-        'model. The work is retrieval that returns the right paragraph, a framework dependency ' +
-        'cut out from under three teams without downtime, and prototypes built small so that ' +
-        'nobody has to guess.',
-      'Which is, I notice, the same job as the board. Build the thing underneath, and ' +
-        'understand the constraints below that.',
+      'I lead the technical side of an AI assistant that business travellers use every day, ' +
+        'and I set the AI architectural direction across the programme. I was made Principal ' +
+        'Engineer in April 2026.',
+      'The work is mostly not the model. Cutting the Bot Framework out from under three ' +
+        'teams and seven microservices, behind a connector, with no downtime. Moving travel ' +
+        'policy questions onto vector search, so the answer comes from the paragraph that is ' +
+        'actually in the policy. Building an agent playground small, so a team could try ' +
+        'things locally before committing to them.',
+      'It is the same thing every time. Learn the layer below the new thing, until I can ' +
+        'build on it.',
     ],
   },
 ];
