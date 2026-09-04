@@ -1,21 +1,12 @@
 import type { Handle } from '@sveltejs/kit';
+import { themeFor } from '$lib/theme';
 
 /**
- * The site has two faces sharing one design system: the personal one (warm)
- * and the professional one (cool). Which palette applies is a function of the
- * route, so it is resolved here and stamped onto <html data-theme> during SSR
- * — that keeps body/overscroll backgrounds correct and avoids a flash of the
- * wrong theme before hydration.
+ * Stamp the route's palette onto <html data-theme> during SSR, so the body and
+ * overscroll backgrounds are correct before hydration and there is no flash of
+ * the wrong theme. Client-side navigation does not re-run this hook — the root
+ * layout keeps the attribute in step from there.
  */
-function themeFor(pathname: string) {
-  return pathname === '/personal' ||
-    pathname.startsWith('/personal/') ||
-    pathname === '/blog' ||
-    pathname.startsWith('/blog/')
-    ? 'personal'
-    : 'professional';
-}
-
 export const handle: Handle = ({ event, resolve }) => {
   const theme = themeFor(event.url.pathname);
   return resolve(event, {

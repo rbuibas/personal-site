@@ -38,6 +38,11 @@
 
 html { scroll-behavior: smooth; }
 
+/* Anchor jumps and rail links animate by default; honour the OS setting. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 body {
   background: var(--bg);
   color: var(--fg);
