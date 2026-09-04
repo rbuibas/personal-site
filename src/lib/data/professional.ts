@@ -1006,11 +1006,12 @@ export const turningPointsCoda = {
 };
 
 /**
- * The essays behind the story. Each is a question the whole career keeps
- * asking; the posts themselves are still to be written, so an entry without a
- * `slug` renders as a stub rather than a dead link. Adding the post to
- * `src/posts/` and setting `slug` here turns it into a real entry — and the
- * date and read time then come from that file's frontmatter.
+ * Writing themes, not a fixed set — the list is meant to grow, so nothing here
+ * or in the copy should depend on how many there are. The posts themselves are
+ * still to be written, so an entry without a `slug` renders as a stub rather
+ * than a dead link. Adding the post to `src/posts/` and setting `slug` here
+ * turns it into a real entry — and the date and read time then come from that
+ * file's frontmatter.
  */
 export type WritingTopic = {
   id: string;
@@ -1026,8 +1027,7 @@ export type WritingEntry = WritingTopic & {
 };
 
 export const writingIntro =
-  'Nineteen years is really only four questions, asked in whatever room I happen to be ' +
-  'standing in. Each one gets an essay of its own.';
+  'Themes I keep coming back to, and want to write about properly. There will be more.';
 
 export const writingTopics: WritingTopic[] = [
   {
