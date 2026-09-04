@@ -33,26 +33,26 @@
   .post-main {
     min-height: 100vh;
     padding: 120px 48px 96px;
-    background: var(--cream);
+    background: var(--bg);
   }
   .post-inner { max-width: 680px; margin: 0 auto; }
   .back {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
     text-decoration: none;
     letter-spacing: .05em;
     transition: color .2s;
     display: inline-block;
     margin-bottom: 40px;
   }
-  .back:hover { color: var(--ink); }
+  .back:hover { color: var(--fg); }
   header { margin-bottom: 56px; }
   header h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(32px, 5vw, 52px);
     font-weight: 600;
-    color: var(--ink);
+    color: var(--fg);
     line-height: 1.1;
     letter-spacing: -.02em;
     margin-bottom: 16px;
@@ -60,13 +60,13 @@
   .post-meta {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
   }
 
   /* Prose styles for mdsvex-rendered markdown */
   .prose :global(p) {
     font-size: 16px;
-    color: var(--ink-light);
+    color: var(--fg-muted);
     line-height: 1.9;
     margin-bottom: 24px;
   }
@@ -74,7 +74,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 28px;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--fg);
     margin: 48px 0 20px;
     letter-spacing: -.01em;
   }
@@ -82,17 +82,17 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--fg);
     margin: 32px 0 14px;
   }
-  .prose :global(strong) { color: var(--ink); font-weight: 500; }
+  .prose :global(strong) { color: var(--fg); font-weight: 500; }
   .prose :global(em) { font-style: italic; }
   .prose :global(a) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
   .prose :global(a:hover) { opacity: .75; }
   .prose :global(code) {
     font-family: 'DM Mono', monospace;
     font-size: 13px;
-    background: var(--cream-dark);
+    background: var(--bg-alt);
     border: 1px solid var(--border);
     padding: 2px 6px;
     border-radius: 2px;
@@ -115,7 +115,7 @@
     border-left: 2px solid var(--accent);
     padding-left: 20px;
     margin: 28px 0;
-    color: var(--ink-light);
+    color: var(--fg-muted);
     font-style: italic;
   }
   .prose :global(ul), .prose :global(ol) {
@@ -124,7 +124,7 @@
   }
   .prose :global(li) {
     font-size: 16px;
-    color: var(--ink-light);
+    color: var(--fg-muted);
     line-height: 1.8;
     margin-bottom: 8px;
   }

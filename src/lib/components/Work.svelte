@@ -1,4 +1,4 @@
-<section class="section" id="work" style="background: #fff">
+<section class="section section--surface" id="work">
   <div class="section-inner">
     <div class="section-label reveal">Selected Work</div>
     <div class="projects-grid">
@@ -44,7 +44,7 @@
     border: 1px solid var(--border);
     border-radius: 4px;
     overflow: hidden;
-    background: #fff;
+    background: var(--surface);
     transition: transform .3s ease, box-shadow .3s ease;
     cursor: pointer;
   }
@@ -67,7 +67,7 @@
     font-family: 'DM Mono', monospace;
     font-size: 12px;
     letter-spacing: .1em;
-    color: var(--ink-faint);
+    color: var(--fg-faint);
   }
   .project-thumb {
     height: 150px;
@@ -89,12 +89,12 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--fg);
     margin-bottom: 8px;
   }
   .project-body p {
     font-size: 13px;
-    color: var(--ink-light);
+    color: var(--fg-muted);
     line-height: 1.7;
     margin-bottom: 14px;
   }

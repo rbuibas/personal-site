@@ -184,7 +184,7 @@
 <style>
   .chat-intro {
     font-size: 14px;
-    color: var(--ink-light);
+    color: var(--fg-muted);
     margin-bottom: 32px;
     max-width: 540px;
     line-height: 1.8;
