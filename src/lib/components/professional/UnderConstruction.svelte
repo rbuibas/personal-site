@@ -10,9 +10,9 @@
   } as const;
 
   const BLURBS = {
-    writing: 'Lorem ipsum dolor sit amet — professional writing lands here.',
-    chat: 'Consectetur adipiscing elit — an assistant for professional questions.',
-    contact: 'Sed do eiusmod tempor — ways to get in touch, coming shortly.',
+    writing: 'Longer professional writing lands here.',
+    chat: 'An assistant for professional questions.',
+    contact: 'Ways to get in touch, coming shortly.',
   } as const;
 </script>
 

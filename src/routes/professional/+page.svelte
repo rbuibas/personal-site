@@ -2,21 +2,21 @@
   import Hero from '$lib/components/Hero.svelte';
   import TimelineSection from '$lib/components/professional/TimelineSection.svelte';
   import UnderConstruction from '$lib/components/professional/UnderConstruction.svelte';
-  import { professionalHero, education, career } from '$lib/data/professional';
+  import { professionalHero, careerIntro, education, career } from '$lib/data/professional';
 </script>
 
 <svelte:head>
-  <title>Raul Buibas — Engineering</title>
+  <title>Raul Buibas — Principal Engineer</title>
   <meta
     name="description"
-    content="Education, career and professional work — a timeline of what I have built and where."
+    content="Nineteen years from printer firmware in C to generative AI in production — education and career, in order."
   />
 </svelte:head>
 
 <Hero {...professionalHero} />
 
-<TimelineSection id="education" label="Education" items={education} />
-<TimelineSection id="career" label="Career" items={career} />
+<TimelineSection id="education" label="Education" eras={education} showEras={false} />
+<TimelineSection id="career" label="Career" eras={career} intro={careerIntro} />
 
 <UnderConstruction id="writing" label="Writing" variant="writing" />
 <UnderConstruction id="chat" label="Chat" variant="chat" />
