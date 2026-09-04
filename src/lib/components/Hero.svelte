@@ -31,10 +31,12 @@
       <span class="tag">{tag}</span>
     {/each}
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>{scrollLabel}</span>
-  </div>
+  {#if scrollLabel}
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>{scrollLabel}</span>
+    </div>
+  {/if}
 </section>
 
 <style>
