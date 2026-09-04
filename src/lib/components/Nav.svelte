@@ -6,9 +6,11 @@
   const PROFESSIONAL: Section = {
     base: '/professional',
     logo: '/professional',
+    // Education and Career are no longer top-level sections — they are one of
+    // three tellings behind the view switcher, all anchored at #story.
     links: [
-      { href: '/professional#education', label: 'Education' },
-      { href: '/professional#career', label: 'Career' },
+      { href: '/professional#story', label: 'Story' },
+      { href: '/professional#writing', label: 'Writing' },
       { href: '/professional#chat', label: 'Chat' },
       { href: '/professional#contact', label: 'Contact' },
     ],
@@ -20,7 +22,7 @@
     links: [
       { href: '/personal#work', label: 'Work' },
       { href: '/personal#about', label: 'About' },
-      { href: '/personal#writing', label: 'Writing' },
+      { href: '/personal#stories', label: 'Stories' },
       { href: '/personal#chat', label: 'Chat' },
       { href: '/personal#contact', label: 'Contact' },
     ],
