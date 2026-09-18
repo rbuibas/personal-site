@@ -25,6 +25,8 @@ SvelteKit personal site deployed on Vercel at **raulbuibas.dev**.
 
 **IRC chat widget** — `src/lib/components/IrcChat.svelte` sends `POST /api/chat` with `{ message, history }`. The server route `src/routes/api/chat/+server.ts` proxies to the Anthropic API (Haiku model) using `ANTHROPIC_API_KEY` from `$env/static/private`. The system prompt / persona lives entirely in that server file. To swap in a RAG backend, replace the Anthropic call in `+server.ts` — the client component doesn't need to change.
 
+**Analytics** — Vercel Web Analytics (`@vercel/analytics`). `src/routes/+layout.svelte` calls `injectAnalytics()` once; the SvelteKit integration subscribes to the `page` store, so client-side navigations are counted alongside full page loads. It only reports when Web Analytics is enabled for the project in the Vercel dashboard (Project → Analytics → Web Analytics → Enable). In dev it loads the debug script and logs to the console instead of sending data. No cookies, no cross-site identifiers, so no consent banner is needed.
+
 **Scroll reveal** — `.reveal` CSS class (defined in `src/app.css`) starts elements invisible. `src/routes/+layout.svelte` sets up an `IntersectionObserver` on mount and after each navigation that adds `.visible` to trigger the transition.
 
 ### Environment
