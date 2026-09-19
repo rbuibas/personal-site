@@ -3,9 +3,19 @@
   import Nav from '$lib/components/Nav.svelte';
   import { onMount } from 'svelte';
   import { afterNavigate } from '$app/navigation';
-  import { browser } from '$app/environment';
+  import { browser, dev } from '$app/environment';
   import { page } from '$app/stores';
   import { themeFor } from '$lib/theme';
+  import { injectAnalytics } from '@vercel/analytics/sveltekit';
+
+  /**
+   * Vercel Web Analytics: page views only, no cookies, no cross-site IDs.
+   * The call is a no-op during SSR and subscribes to `page` in the browser, so
+   * client-side navigations are counted as well as full page loads. Requires
+   * Web Analytics to be enabled for the project in the Vercel dashboard; in dev
+   * it loads the debug script and only logs to the console.
+   */
+  injectAnalytics({ mode: dev ? 'development' : 'production' });
 
   /**
    * `hooks.server.ts` stamps <html data-theme> during SSR, but that hook does
